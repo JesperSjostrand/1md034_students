@@ -1,10 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>DELI-VERY</title>
-    </head>
-    <body>
-        <h1>Hello World!!!</h1>
-        <a href="/map" target="_blank">Open map in new window</a>.
-    </body>
+  <head>
+    <title>BurgerTown</title>
+    <meta charset="utf-8"/>
+  </head>
+
+  <body>
+    <main>
+      <h1>Welcome to BurgerTown!</h1>
+
+      <section>
+        <h2>Select your order:</h2>
+
+        <table>
+          <thead>
+            <tr>
+              <th><h3>Standard burger</h3></th>
+              <th><h3>Bugdet burger</h3></th>
+              <th><h3>Deluxe burger</h3></th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <th>
+                <img src="https://www.simplyrecipes.com/wp-content/uploads/2018/06/HT-Grill-Burger-LEAD-VERTICAL.jpg" alt="Standard burger" height="300" width="300"> 
+
+                <ul>
+                  <li>Contains meat</li>
+                  <li>Contains bread</li>
+                  <li>Contains cheese</li>
+                </ul>
+              </th>
+
+              <th>
+                <img src="https://cdn.arstechnica.net/wp-content/uploads/2018/08/IF-Burger-800x603.jpg" alt="Burger 1" height="300" width="300"> 
+
+                <ul>
+                  <li>Contains meat</li>
+                  <li>Contains bread</li>
+                  <li>Contains cheese</li>
+                </ul>
+              </th>
+
+              <th>
+                <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Gruyere-and-Egg-Burgers_EXPS_THAM18_192202_B12_12_1b-1-696x696.jpg" alt="Deluxe burger" height="300" width="300"> 
+
+                <ul>
+                  <li>Contains meat</li>
+                  <li>Contains bread</li>
+                  <li>Contains cheese</li>
+                </ul>
+              </th>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
+      <section id="contact">
+        <h2>Delivery information:</h2>
+        <form>
+          <p>
+            <label for="name">Full name:</label> <br>
+            <input type="text" id="name" name="name" required="required" placeholder="First- and Last name">
+          </p>
+
+          <p>
+            <label for="email">E-mail:</label> <br>
+            <input type="email" id="email" name="email" required="required" placeholder="E-mail address">
+          </p>
+
+          <p>
+            <label for="street">Street</label> <br>
+            <input type="text" id="street" name="street" required="required" placeholder="Street name">
+          </p>
+
+          <p>
+            <label for="house">House</label> <br>
+            <input type="number" id="house" name="house" required="required" placeholder="House number">
+          </p>
+
+          <p>
+            <label for="payment">Payment method</label> <br>
+            <select id="payment" name="payment">
+              <option>Card</option>
+              <option>Cash</option>
+              <option>Barter</option>
+            </select>
+          </p>
+
+          <p>
+            <p>Gender:</p>
+            <input type="radio" id="male" name="gender">
+            <label for="male">Male</label> <br>
+
+            <input type="radio" id="female" name="gender">
+            <label for="female">Female</label> <br>
+
+            <input type="radio" id="no" name="gender">
+            <label for="no">Do not wish to provide</label>
+          </p>
+        </form>
+
+        <p>
+          <button type="submit"><img src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png" width="20"> Send</button>
+        </p>
+      </section>
+    </main>
+
+    <footer>
+      <hr>
+      <p>
+        &copy 2019 BurgerTown
+      </p>
+    </footer>
+  </body>
 </html>
