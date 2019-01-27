@@ -3,55 +3,56 @@
   <head>
     <title>BurgerTown</title>
     <meta charset="utf-8"/>
-    <link rel="stylesheet" type="text/css" href="public/reset.css">
-    <link rel="stylesheet" type="text/css" href="public/style.css">
+    <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
 
   <body>
     <main>
-      <h1>Welcome to BurgerTown!</h1>
+      <header id="header">
+        <img src="https://d2yk4sockbjvo.cloudfront.net/wp-content/uploads/2015/02/umami-burger-location-broadway-new-2.jpg" alt"Resturant background">
+        <h1>Welcome to BurgerTown!</h1>
+      </header>
 
-      <section>
+      <section id="order">
         <h2>Select your order:</h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th><h3>Standard burger</h3></th>
-              <th><h3>Bugdet burger</h3></th>
-              <th><h3>Deluxe burger</h3></th>
-            </tr>
-          </thead>
+        <div class="burgers">
+          <div class="burger b1">
+            <th><h3>Standard burger</h3></th>
+            <img class="burgerimg" src="https://www.simplyrecipes.com/wp-content/uploads/2018/06/HT-Grill-Burger-LEAD-VERTICAL.jpg" alt="Standard burger"> 
 
-          <tbody>
-            <tr>
-              <th>
-                <img src="https://www.simplyrecipes.com/wp-content/uploads/2018/06/HT-Grill-Burger-LEAD-VERTICAL.jpg" alt="Standard burger" height="300" width="300"> 
+            <div class="allergies">
+              <ul>
+                <li>Contains gluten</li>
+              </ul>
+            </div>
+          </div>
 
-                <ul>
-                  <li>Contains gluten</li>
-                </ul>
-              </th>
+          <div class="burger b2">
+            <th><h3>Bugdet burger</h3></th>
+            <img class="burgerimg" src="https://cdn.arstechnica.net/wp-content/uploads/2018/08/IF-Burger-800x603.jpg" alt="Burger 1"> 
 
-              <th>
-                <img src="https://cdn.arstechnica.net/wp-content/uploads/2018/08/IF-Burger-800x603.jpg" alt="Burger 1" height="300" width="300"> 
+            <div class="allergies">
+              <ul>
+                <li>Contains lactose</li>
+                <li>Contains gluten</li>
+              </ul>
+            </div>
+          </div>
 
-                <ul>
-                  <li>Contains lactose</li>
-                  <li>Contains gluten</li>
-                </ul>
-              </th>
+          <div class="burger b3">
+            <th><h3>Deluxe burger</h3></th>
+            <img class="burgerimg" src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Gruyere-and-Egg-Burgers_EXPS_THAM18_192202_B12_12_1b-1-696x696.jpg" alt="Deluxe burger"> 
 
-              <th>
-                <img src="https://www.tasteofhome.com/wp-content/uploads/2018/01/Gruyere-and-Egg-Burgers_EXPS_THAM18_192202_B12_12_1b-1-696x696.jpg" alt="Deluxe burger" height="300" width="300"> 
+            <div class="allergies">
+              <ul>
+                <li>Contains lactose</li>
+              </ul>
+            </div>
+          </div>
 
-                <ul>
-                  <li>Contains lactose</li>
-                </ul>
-              </th>
-            </tr>
-          </tbody>
-        </table>
+        </div>
       </section>
 
       <section id="contact">
@@ -100,7 +101,7 @@
         </form>
 
         <p>
-          <button type="submit"><img src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png" width="20"> Send</button>
+          <button type="submit"><img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Send</button>
         </p>
       </section>
     </main>
