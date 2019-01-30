@@ -3,7 +3,10 @@
   <head>
     <title>BurgerTown</title>
     <meta charset="utf-8"/>
+
+    <!-- Added just in case I want to use it in the future -->
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
+
     <link rel="stylesheet" type="text/css" href="css/style.css">
   </head>
 
@@ -16,6 +19,7 @@
 
       <section id="order">
         <h2>Select your order:</h2>
+        <span>Please select what you wish to order: </span>
 
         <div class="burgers">
           <div class="burger b1">
@@ -48,6 +52,7 @@
             <div class="allergies">
               <ul>
                 <li>Contains lactose</li>
+                <li>Contains egg</li>
               </ul>
             </div>
           </div>
@@ -57,6 +62,8 @@
 
       <section id="contact">
         <h2>Delivery information:</h2>
+        <span>Please enter your information: </span>
+
         <form>
           <p>
             <label for="name">Full name:</label> <br>
@@ -84,6 +91,7 @@
               <option>Card</option>
               <option>Cash</option>
               <option>Barter</option>
+              <option>Work</option>
             </select>
           </p>
 
@@ -95,13 +103,13 @@
             <input type="radio" id="female" name="gender">
             <label for="female">Female</label> <br>
 
-            <input type="radio" id="no" name="gender">
+            <input type="radio" id="no" name="gender" checked="checked">
             <label for="no">Do not wish to provide</label>
           </p>
         </form>
 
         <p>
-          <button type="submit"><img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Send</button>
+          <button type="submit"><img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Place order</button>
         </p>
       </section>
     </main>
