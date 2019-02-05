@@ -1,26 +1,6 @@
-function Burger(name, pictureURL, allergens) {
-  this.name = name;
-  this.pictureURL = pictureURL;
-  this.allergens = allergens;
-
-  this.hasAllergens = function() {
-    return allergens.length != 0;
-  }
+function hasAllergens(burger) {
+  return burger.allergens.length != 0;
 }
-
-var burgers = [
-  new Burger("Standard burger", 
-    "https://www.simplyrecipes.com/wp-content/uploads/2018/06/HT-Grill-Burger-LEAD-VERTICAL.jpg", 
-    ["gluten"]),
-
-  new Burger("Budget burger", 
-    "https://cdn.arstechnica.net/wp-content/uploads/2018/08/IF-Burger-800x603.jpg", 
-    ["gluten", "lactose"]),
-
-  new Burger("Deluxe burger", 
-    "https://www.tasteofhome.com/wp-content/uploads/2018/01/Gruyere-and-Egg-Burgers_EXPS_THAM18_192202_B12_12_1b-1-696x696.jpg", 
-    ["lactose", "egg"])
-]
 
 function calculateRow(index) {
   return Math.floor(index / 3) + 1;
@@ -29,7 +9,6 @@ function calculateRow(index) {
 function calculateColumn(index) {
   return (index % 3) + 1;
 }
-
 
 function constructMenuItem(burger, index) {
   var div = document.createElement("div");
@@ -43,11 +22,11 @@ function constructMenuItem(burger, index) {
 
   var img = document.createElement("img");
   img.classList.add("burgerimg");
-  img.src = burger.pictureURL;
+  img.src = burger.imgURL;
   img.alt = burger.name;
   div.append(img);
 
-  if(burger.hasAllergens()){
+  if(hasAllergens(burger)){
     var allergies = document.createElement("div");
     div.classList.add("allergies");
 

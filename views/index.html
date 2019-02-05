@@ -8,8 +8,10 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://vuejs.org/js/vue.js"></script>
+    <script src="js/menu.js"></script>
+
     <!-- <script src="js/js_script.js" defer></script> -->
-    <script src="https://vuejs.org/js/vue.js" defer></script>
     <script src="js/vue_script.js" defer></script>
   </head>
 
@@ -28,9 +30,9 @@
           <template v-for="(burger, index) in burgers">
             <div class="burger" v-bind:style="getGridPos(index)">
               <h3>{{burger.name}}</h3>
-              <img class="burgerimg" v-bind:src="burger.pictureURL" v-bind:alt="burger.name"> 
+              <img class="burgerimg" v-bind:src="burger.imgURL" v-bind:alt="burger.name"> 
 
-              <div class="allergies" v-if="burger.hasAllergens()">
+              <div class="allergies" v-if="hasAllergens(burger)">
                 <ul>
                   <li v-for="allergen in burger.allergens">Contains {{allergen}}</li>
                 </ul>
