@@ -22,11 +22,20 @@ var burgers = [
     ["lactose", "egg"])
 ]
 
+function calculateRow(index) {
+  return Math.floor(index / 3) + 1;
+}
+
+function calculateColumn(index) {
+  return (index % 3) + 1;
+}
+
+
 function constructMenuItem(burger, index) {
   var div = document.createElement("div");
   div.classList.add("burger")
-  div.style.gridColumn = (index % 3) + 1;
-  div.style.gridRow = Math.floor(index / 3) + 1;
+  div.style.gridColumn = calculateColumn(index);
+  div.style.gridRow = calculateRow(index);
 
   var header = document.createElement("h3");
   header.appendChild(document.createTextNode(burger.name));
