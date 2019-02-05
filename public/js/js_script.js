@@ -25,7 +25,8 @@ var burgers = [
 function constructMenuItem(burger, index) {
   var div = document.createElement("div");
   div.classList.add("burger")
-  div.style.gridColumn = index + 1;
+  div.style.gridColumn = (index % 3) + 1;
+  div.style.gridRow = Math.floor(index / 3) + 1;
 
   var header = document.createElement("h3");
   header.appendChild(document.createTextNode(burger.name));
