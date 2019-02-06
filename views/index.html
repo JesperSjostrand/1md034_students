@@ -11,8 +11,8 @@
     <script src="https://vuejs.org/js/vue.js"></script>
     <script src="js/menu.js"></script>
 
-    <!-- <script src="js/js_script.js" defer></script> -->
-    <script src="js/vue_script.js" defer></script>
+    <script src="js/js_script.js" defer></script>
+    <!-- <script src="js/vue_script.js" defer></script> -->
   </head>
 
   <body>
@@ -30,6 +30,9 @@
           <template v-for="(burger, index) in burgers">
             <div class="burger" v-bind:style="getGridPos(index)">
               <h3>{{burger.name}}</h3>
+              <div>
+                Order:<input type="checkbox" v-bind:value="burger.name" v-bind:id="burgerId(index)">
+              </div>
               <img class="burgerimg" v-bind:src="burger.imgURL" v-bind:alt="burger.name"> 
 
               <div class="allergies" v-if="hasAllergens(burger)">
@@ -91,8 +94,12 @@
         </form>
 
         <p>
-          <button type="submit"><img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Place order</button>
+          <button id="formButton" v-on:click="formSubmit" type="submit"><img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Place order</button>
         </p>
+
+        <div id="orderInfo" v-for="info in orderInfo">
+          {{info}}
+        </div>
       </section>
     </main>
 

@@ -1,4 +1,4 @@
-var burgers = [
+var items = [
   {
     "name": "Standard burger",
     "imgURL": "https://www.simplyrecipes.com/wp-content/uploads/2018/06/HT-Grill-Burger-LEAD-VERTICAL.jpg",
