@@ -13,5 +13,15 @@ var items = [
     "name": "Deluxe burger",
     "imgURL": "https://www.tasteofhome.com/wp-content/uploads/2018/01/Gruyere-and-Egg-Burgers_EXPS_THAM18_192202_B12_12_1b-1-696x696.jpg",
     "allergens": ["lactose", "egg"]
+  },
+  {
+    "name": "Vegan burger",
+    "imgURL": "https://www.connoisseurusveg.com/wp-content/uploads/2016/01/vegan-meatloaf-burger-1.jpg",
+    "allergens": ["gluten"]
+  },
+  {
+    "name": "Salad",
+    "imgURL": "https://mittkok.expressen.se/wp-content/uploads/2013/05/recept.8187.460x345-700x700.jpg",
+    "allergens": []
   }
 ]

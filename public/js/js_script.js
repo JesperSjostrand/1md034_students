@@ -20,7 +20,15 @@ function getMenu() {
 
     new menuItem("Deluxe burger",
       "https://www.tasteofhome.com/wp-content/uploads/2018/01/Gruyere-and-Egg-Burgers_EXPS_THAM18_192202_B12_12_1b-1-696x696.jpg",
-      ["lactose", "egg"])
+      ["lactose", "egg"]),
+
+    new menuItem("Vegan burger",
+      "https://www.connoisseurusveg.com/wp-content/uploads/2016/01/vegan-meatloaf-burger-1.jpg",
+      ["gluten"]),
+
+    new menuItem("Salad",
+      "https://mittkok.expressen.se/wp-content/uploads/2013/05/recept.8187.460x345-700x700.jpg",
+      [])
   ];
 }
 
