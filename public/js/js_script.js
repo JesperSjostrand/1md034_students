@@ -100,31 +100,12 @@ function generateMenu(burgers) {
   }
 }
 
-// ---------- EXECUTION STARTS HERE ----------
-// Switch between these to change if menu.js or getMenu() is used
-// generateMenu(getMenu());
-generateMenu(items);
-
 // ---------- FORM SUBMISSION ----------
-function getFormData(menuLength) {
+function readFormData(menuLength) {
   var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
-  var street = document.getElementById("street").value;
-  var house = document.getElementById("house").value;
   var payment = document.getElementById("payment").value;
-
-  var genders = document.getElementsByName('gender');
-  var selectedGender;
-
-  for (var i in genders)
-  {
-    if (genders[i].checked)
-    {
-      selectedGender = genders[i].id;
-      selectedGender = (selectedGender == "no") ? "Do not wish to provide" : selectedGender;
-      break;
-    }
-  }
+  var selectedGender = document.querySelector('input[name="gender"]:checked').value;
 
   var order = [];
 
@@ -135,18 +116,28 @@ function getFormData(menuLength) {
     }
   }
 
-  return [name, email, street, house, payment, selectedGender, order];
+  return [name, email, payment, selectedGender, order];
 }
 
-var button = document.getElementById("formButton");
-button.onclick = function () {
+function displayFormData(orderInfo) {
   var div = document.getElementById("orderInfo");
   div.innerHTML = "";
-
-  var orderInfo = getFormData(items.length);
+  div.style.display = "block";
 
   for(var i in orderInfo) {
     div.appendChild(document.createTextNode(orderInfo[i]));
     div.appendChild(document.createElement("br"));
   }
+}
+
+// ---------- EXECUTION STARTS HERE ----------
+// Switch between these to change if menu.js or getMenu() is used
+// generateMenu(getMenu());
+generateMenu(items);
+
+var button = document.getElementById("formButton");
+
+button.onclick = function () {
+  var orderInfo = readFormData(items.length);
+  displayFormData(orderInfo);
 }

@@ -11,6 +11,10 @@
     <script src="https://vuejs.org/js/vue.js"></script>
     <script src="js/menu.js"></script>
 
+    <link rel="stylesheet" href="css/deli-very.css">
+    <script src="/socket.io/socket.io.js" defer></script>
+    <script src="js/deli-very.js" defer></script>
+
     <!-- <script src="js/js_script.js" defer></script> -->
     <script src="js/vue_script.js" defer></script>
   </head>
@@ -61,16 +65,6 @@
           </p>
 
           <p>
-            <label for="street">Street</label> <br>
-            <input type="text" id="street" name="street" required="required" placeholder="Street name">
-          </p>
-
-          <p>
-            <label for="house">House</label> <br>
-            <input type="number" id="house" name="house" required="required" placeholder="House number">
-          </p>
-
-          <p>
             <label for="payment">Payment method</label> <br>
             <select id="payment" name="payment">
               <option>Card</option>
@@ -82,23 +76,43 @@
 
           <p>
             <p>Gender:</p>
-            <input type="radio" id="male" name="gender">
+            <input type="radio" id="male" value="Male" name="gender">
             <label for="male">Male</label> <br>
 
-            <input type="radio" id="female" name="gender">
+            <input type="radio" id="female" value="Female" name="gender">
             <label for="female">Female</label> <br>
 
-            <input type="radio" id="no" name="gender" checked="checked">
+            <input type="radio" id="no" value="Do not wish to provide" name="gender" checked="checked">
             <label for="no">Do not wish to provide</label>
           </p>
+
         </form>
 
-        <p>
-          <button id="formButton" v-on:click="formSubmit" type="submit"><img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Place order</button>
-        </p>
+        <div class="view-box">
+          <div id="dots" v-on:click="displayOrder">
+            <div 
+               v-for="(order, key) in orders"
+               v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
+              {{key}}
+            </div>
+            <div 
+               v-bind:style="{ left: currentOrder.details.x + 'px', top: currentOrder.details.y + 'px'}">
+              T
+            </div>
+            <button v-on:click="addOrder" type="submit"> </button>
+          </div>
+        </div>
 
-        <div id="orderInfo" v-for="info in orderInfo">
-          {{info}}
+        <div id="submit">
+          <p>
+          <button id="formButton" v-on:click="formSubmit" type="submit">
+            <img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Place order
+          </button>
+          </p>
+
+          <div id="orderInfo" v-for="info in orderInfo" style="display: none;">
+            {{info}}
+          </div>
         </div>
       </section>
     </main>

@@ -29,25 +29,11 @@ var vm1 = new Vue({
 
 
 // ---------- FORM SUBMISSION ----------
-function getFormData(menuLength) {
+function readFormData(menuLength) {
   var name = document.getElementById("name").value;
   var email = document.getElementById("email").value;
-  var street = document.getElementById("street").value;
-  var house = document.getElementById("house").value;
   var payment = document.getElementById("payment").value;
-
-  var genders = document.getElementsByName('gender');
-  var selectedGender;
-
-  for (var i in genders)
-  {
-    if (genders[i].checked)
-    {
-      selectedGender = genders[i].id;
-      selectedGender = (selectedGender == "no") ? "Do not wish to provide" : selectedGender;
-      break;
-    }
-  }
+  var selectedGender = document.querySelector('input[name="gender"]:checked').value;
 
   var order = [];
 
@@ -58,22 +44,26 @@ function getFormData(menuLength) {
     }
   }
 
-  return [name, email, street, house, payment, selectedGender, order];
+  return [name, email, payment, selectedGender, order];
 }
 
 var vm2 = new Vue({
-  el: "#contact",
+  el: "#submit",
   data: {
     orderInfo: [""]
   },
+  created: function () {
+    var div = document.getElementById("orderInfo");
+    div.style.display = "block";
+  },
   methods: {
     formSubmit: function () {
-      var newInfo = getFormData(items.length);
+      var newInfo = readFormData(items.length);
+
       //Loop necessary to make Vue detect the changes
       for(var i = 0; i < newInfo.length; i++) {
         Vue.set(vm2.orderInfo, i, newInfo[i]);
       }
-      console.log("Updated orderInfo: " + vm2.orderInfo);
     }
   }
 })
