@@ -8,12 +8,10 @@
     <!-- <link rel="stylesheet" type="text/css" href="css/reset.css"> -->
 
     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <script src="https://vuejs.org/js/vue.js"></script>
-    <script src="js/menu.js"></script>
-
     <link rel="stylesheet" href="css/deli-very.css">
+    <script src="https://vuejs.org/js/vue.js"></script>
     <script src="/socket.io/socket.io.js" defer></script>
-    <script src="js/deli-very.js" defer></script>
+    <script src="js/menu.js"></script>
 
     <!-- <script src="js/js_script.js" defer></script> -->
     <script src="js/vue_script.js" defer></script>
@@ -99,15 +97,14 @@
                v-bind:style="{ left: currentOrder.details.x + 'px', top: currentOrder.details.y + 'px'}">
               T
             </div>
-            <button v-on:click="addOrder" type="submit"> </button>
           </div>
         </div>
 
-        <div id="submit">
+        <div>
           <p>
-          <button id="formButton" v-on:click="formSubmit" type="submit">
-            <img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Place order
-          </button>
+            <button id="formButton" v-on:click="addOrder" type="submit">
+              <img id="placeorderimg" src="https://cdn2.iconfinder.com/data/icons/shopping-e-commerce-2-1/32/Success-Place-Order-Complete-Shopping-Tick-512.png"> Place order
+            </button>
           </p>
 
           <div id="orderInfo" v-for="info in orderInfo" style="display: none;">

@@ -29,41 +29,80 @@ var vm1 = new Vue({
 
 
 // ---------- FORM SUBMISSION ----------
-function readFormData(menuLength) {
-  var name = document.getElementById("name").value;
-  var email = document.getElementById("email").value;
-  var payment = document.getElementById("payment").value;
-  var selectedGender = document.querySelector('input[name="gender"]:checked').value;
+function formData(menuLength) {
+  this.name = document.getElementById("name").value;
+  this.email = document.getElementById("email").value;
+  this.payment = document.getElementById("payment").value;
+  this.selectedGender = document.querySelector('input[name="gender"]:checked').value;
 
-  var order = [];
+  var items = [];
 
   for(var i = 0; i < menuLength; i++) {
     var checkBox = document.getElementById("burger" + i);
     if(checkBox.checked) {
-      order.push(checkBox.value);
+      items.push(checkBox.value);
     }
   }
 
-  return [name, email, payment, selectedGender, order];
+  this.order = items;
 }
 
+var socket = io();
+
 var vm2 = new Vue({
-  el: "#submit",
+  el: "#contact",
   data: {
-    orderInfo: [""]
+    orders: {},
+    currentOrder: { orderId: 0,
+                    details: { x: 0, y: 0 },
+                    orderItems: []},
+    orderInfo: {}
   },
   created: function () {
     var div = document.getElementById("orderInfo");
     div.style.display = "block";
+
+    socket.on('initialize', function (data) {
+      this.orders = data.orders;
+    }.bind(this));
+
+    socket.on('currentQueue', function (data) {
+      this.orders = data.orders;
+    }.bind(this));
   },
   methods: {
-    formSubmit: function () {
-      var newInfo = readFormData(items.length);
+    getNext: function () {
+      var lastOrder = Object.keys(this.orders).reduce(function (last, next) {
+        return Math.max(last, next);
+      }, 0);
+      return lastOrder + 1;
+    },
+    addOrder: function (event) {
+      var newInfo = new formData(items.length);
+      this.orderInfo = newInfo;
+      console.log(this.orderInfo);
 
-      //Loop necessary to make Vue detect the changes
-      for(var i = 0; i < newInfo.length; i++) {
-        Vue.set(vm2.orderInfo, i, newInfo[i]);
-      }
+
+      this.currentOrder.orderId = this.getNext();
+      this.currentOrder.orderItems = this.orderInfo.order;
+      socket.emit("addOrder", this.currentOrder);
+    },
+    displayOrder: function (event) {
+      var offset = { x: event.currentTarget.getBoundingClientRect().left,
+                     y: event.currentTarget.getBoundingClientRect().top};
+      this.currentOrder.details = { x: event.clientX - 10 - offset.x,
+                                    y: event.clientY - 10 - offset.y };
     }
+
+
+    // addOrder: function (event) {
+    //   var offset = {x: event.currentTarget.getBoundingClientRect().left,
+    //                 y: event.currentTarget.getBoundingClientRect().top};
+    //   socket.emit("addOrder", { orderId: this.getNext(),
+    //                             details: { x: event.clientX - 10 - offset.x,
+    //                                        y: event.clientY - 10 - offset.y },
+    //                             orderItems: ["Beans", "Curry"]
+    //                           });
+    // }
   }
-})
+});
