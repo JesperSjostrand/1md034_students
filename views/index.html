@@ -88,13 +88,7 @@
 
         <div class="view-box">
           <div id="dots" v-on:click="displayOrder">
-            <div 
-               v-for="(order, key) in orders"
-               v-bind:style="{ left: order.details.x + 'px', top: order.details.y + 'px'}">
-              {{key}}
-            </div>
-            <div 
-               v-bind:style="{ left: currentOrder.details.x + 'px', top: currentOrder.details.y + 'px'}">
+            <div v-bind:style="{ left: order.position.x + 'px', top: order.position.y + 'px'}">
               T
             </div>
           </div>
@@ -107,7 +101,7 @@
             </button>
           </p>
 
-          <div id="orderInfo" v-for="info in orderInfo" style="display: none;">
+          <div id="orderInfo" v-for="info in order.info" style="display: none;">
             {{info}}
           </div>
         </div>
